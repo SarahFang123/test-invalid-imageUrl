@@ -15,7 +15,7 @@ class StockCell: UITableViewCell {
     @IBOutlet weak var StockCodeLabel: UILabel!
     
     var stock: Stock? {
-        // using accessoryTyoe to show weather the stock is favorite
+        // using accessoryTyoe to show whether the stock is favorite
         didSet {
             self.StockNameLabel.text = stock?.name
             self.StockCodeLabel.text = stock?.code
