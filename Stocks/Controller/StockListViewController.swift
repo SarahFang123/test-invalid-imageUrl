@@ -68,7 +68,7 @@ extension StockListViewController: UITableViewDelegate {
             cell?.accessoryType = confirmedStock!.favorite ? .checkmark : .none
             completion(true)
         }
-        action.image=UIImage(named: "heart")
+
         action.backgroundColor = confirmedStock!.favorite ? .gray : .blue
 
         return action
