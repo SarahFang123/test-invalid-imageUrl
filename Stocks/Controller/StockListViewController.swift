@@ -30,7 +30,6 @@ class StockListViewController: UIViewController {
 }
 
 extension StockListViewController: UITableViewDataSource {
-
     //Mark:Date Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.stock.count
@@ -41,13 +40,39 @@ extension StockListViewController: UITableViewDataSource {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "stockCell") as! StockCell
         
         let currentStock=self.stock[indexPath.row]
-        cell.StockNameLabel.text = currentStock.name
-        cell.StockCodeLabel.text = currentStock.code
         
+        cell.stock = currentStock
+
         return cell
     }
 }
 
 extension StockListViewController: UITableViewDelegate {
+    //mark: delegate
+
+    func tableView(_ tableView:UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)->UISwipeActionsConfiguration? {
+        let important = importantAction(at:indexPath)
+        return UISwipeActionsConfiguration(actions: [important])
+    }
+    
+    func importantAction(at indexPath: IndexPath) -> UIContextualAction {
+        let cell =  self.tableView.cellForRow(at: indexPath) as? StockCell
+        let confirmedStock = cell?.stock
         
+        //make it go back and forth
+        let title = confirmedStock!.favorite ?
+          NSLocalizedString("Unfavorite", comment: "Unfavorite") :
+          NSLocalizedString("Favorite", comment: "Favorite")
+        let action = UIContextualAction(style: .normal, title: title) { (action, view, completion) in
+            confirmedStock!.favorite = !confirmedStock!.favorite
+            cell?.accessoryType = confirmedStock!.favorite ? .checkmark : .none
+            completion(true)
+        }
+        action.image=UIImage(named: "heart")
+        action.backgroundColor = confirmedStock!.favorite ? .gray : .blue
+
+        return action
+    }
 }
+    
+

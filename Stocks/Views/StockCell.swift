@@ -10,9 +10,18 @@ import UIKit
 
 class StockCell: UITableViewCell {
 
+
     @IBOutlet weak var StockNameLabel: UILabel!
-    
     @IBOutlet weak var StockCodeLabel: UILabel!
+    
+    var stock: Stock? {
+        didSet {
+            self.StockNameLabel.text = stock?.name
+            self.StockCodeLabel.text = stock?.code
+            self.accessoryType = stock!.favorite ? .checkmark : .none
+
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

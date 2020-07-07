@@ -15,7 +15,7 @@ class StockService {
             Stock(named: "Amazon", code:"AMZN"),
             Stock(named: "Alphabet", code:"GOOG" ),
             Stock(named: "Facebook", code: "FB"),
-            Stock(named: "NVIDIA", code: "FB"),
+            Stock(named: "NVIDIA", code: "NVDA"),
             Stock(named: "Tesla", code: "TSLA"),
             Stock(named: "NetFlex", code: "NFLX"),
             Stock(named: "Slack", code: "WORK"),

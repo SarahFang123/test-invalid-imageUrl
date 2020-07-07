@@ -11,6 +11,8 @@ import Foundation
 class Stock {
     var name: String
     var code: String
+    //var confirmedSighting: Bool = false
+    var favorite: Bool = false
     
     init(named name: String, code: String) {
         self.name = name
