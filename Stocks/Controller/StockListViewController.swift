@@ -20,13 +20,29 @@ class StockListViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.stockService = StockService()
-        self.stock = stockService.getStocks()
+        stockService.getStocks(completion: {stocks, error in
+            guard let stocks = stocks, error == nil else {
+                return
+            }
+            self.stock = stocks
+            self.tableView.reloadData()
+        })
     
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
-
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            let destination = segue.destination as? DetailViewController,
+            let selectedIndexPath = self.tableView.indexPathForSelectedRow,
+            let confirmedCell = self.tableView.cellForRow(at: selectedIndexPath) as? StockCell
+            else { return }
+        
+        let confirmedStock = confirmedCell.stock
+        destination.stock = confirmedStock
+        
+    }
 }
 
 extension StockListViewController: UITableViewDataSource {
@@ -49,7 +65,7 @@ extension StockListViewController: UITableViewDataSource {
 
 extension StockListViewController: UITableViewDelegate {
     //mark: delegate
-
+    /* swipe action
     func tableView(_ tableView:UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)->UISwipeActionsConfiguration? {
         let important = importantAction(at:indexPath)
         return UISwipeActionsConfiguration(actions: [important])
@@ -73,6 +89,7 @@ extension StockListViewController: UITableViewDelegate {
 
         return action
     }
+    */
 }
     
 

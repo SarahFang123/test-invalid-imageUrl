@@ -8,28 +8,42 @@
 
 import Foundation
 
+enum StockCallingError: Error {
+    case problemGeneratingimgURL
+    case problemGeneratingDataFromAPI
+    case problemEncodingData
+}
+    
 class StockService {
-    func getStocks() -> [Stock] {
-        return [
-            Stock(named: "Apple", code: "AAPL"),
-            Stock(named: "Amazon", code:"AMZN"),
-            Stock(named: "Alphabet", code:"GOOG" ),
-            Stock(named: "Facebook", code: "FB"),
-            Stock(named: "NVIDIA", code: "NVDA"),
-            Stock(named: "Tesla", code: "TSLA"),
-            Stock(named: "NetFlex", code: "NFLX"),
-            Stock(named: "Slack", code: "WORK"),
-            Stock(named: "Zoom", code: "ZM"),
-            Stock(named: "Microsoft", code: "MSFT"),
-            Stock(named: "AMD", code: "AMD"),
-            Stock(named:"Intel", code: "Intel"),
-            Stock(named: "Alibaba", code: "BABA"),
-            Stock(named: "Boeing", code: "BA"),
-            Stock(named: "CME", code:"CME"),
-            Stock(named: "GM", code: "GM"),
-            Stock(named: "Visa", code:"V"),
-            Stock(named: "Walmart", code: "WMT"),
-            Stock(named: "Nike", code: "NKE")]
+    private let urlString = "https://run.mocky.io/v3/1b0fc466-6dfa-4438-8c52-0f890c3a5599"
+    func getStocks(completion: @escaping ([Stock]?, Error?) -> ())  {
+        guard let url = URL(string: self.urlString) else {
+            DispatchQueue.main.async { completion(nil,
+            StockCallingError.problemGeneratingimgURL)}
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) {data,
+            response, error in
+            guard let data = data, error == nil else {
+                DispatchQueue.main.async {
+                    completion(nil, StockCallingError.problemGeneratingDataFromAPI)}
+                return
+            }
+            do {
+                let stockResult = try JSONDecoder().decode(StockResult.self,
+                                                          from: data)
+                DispatchQueue.main.async {completion(stockResult.stocks, nil)}
+            } catch (let error) {
+                print(error)
+                DispatchQueue.main.async {completion(nil, StockCallingError.problemEncodingData)}
+            }
+            
+        }
+        task.resume()
+        
     }
 }
  
+

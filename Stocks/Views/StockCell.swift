@@ -11,6 +11,7 @@ import UIKit
 class StockCell: UITableViewCell {
 
 
+    @IBOutlet weak var stockImageView: UIImageView!
     @IBOutlet weak var StockNameLabel: UILabel!
     @IBOutlet weak var StockCodeLabel: UILabel!
     
@@ -19,8 +20,14 @@ class StockCell: UITableViewCell {
         didSet {
             self.StockNameLabel.text = stock?.name
             self.StockCodeLabel.text = stock?.code
-            self.accessoryType = stock!.favorite ? .checkmark : .none
-
+            //self.accessoryType = stock!.favorite ? .checkmark : .none
+            
+            DispatchQueue.global(qos: .userInitiated).async {
+                let stockImageData = NSData(contentsOf: URL(string: self.stock!.imageUrl)!)
+                DispatchQueue.main.async {
+                    self.stockImageView.image = UIImage(data: stockImageData as! Data)
+                }
+            }
         }
     }
     
