@@ -27,15 +27,26 @@ class StockListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         guard let confirmedService = self.stockService else { return }
-        
         confirmedService.getStocks(completion: {stocks, error in
+            print(stocks)
             guard let stocks = stocks, error == nil else {
+                let alert = UIAlertController(title: "Error", message: "\(error)" + ". \nRetry?", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+                self.viewDidLoad()
+                self.viewWillAppear(true)
+                }
+            
+            alert.addAction(OKAction)
+
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
                 return
             }
             self.stock = stocks
             self.tableView.reloadData()
         })
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
             let destination = segue.destination as? DetailViewController,

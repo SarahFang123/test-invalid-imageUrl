@@ -34,9 +34,9 @@ class StockListViewControllerTests: XCTestCase {
         //Given
         let mockStockService = MockStockService()
         let mockStocks = [
-            Stock(named: "Peach", code: "PCH", imageUrl: "https://img.cdndtl.co.uk/umbraco2017/21948/peach-emoji-iphone.jpg?auto=format&s=02ef7650f71bfeb231438eacd3e95756", price: "123", industry: "IT"),
-            Stock(named: "Banana", code: "BNN", imageUrl: "https://img.cdndtl.co.uk/umbraco2017/21948/peach-emoji-iphone.jpg?auto=format&s=02ef7650f71bfeb231438eacd3e95756", price: "456", industry: "IT"),
-            Stock(named: "Orange", code: "ORG", imageUrl: "https://img.cdndtl.co.uk/umbraco2017/21948/peach-emoji-iphone.jpg?auto=format&s=02ef7650f71bfeb231438eacd3e95756", price: "789", industry: "IT"),
+            Stock(named: "Peach", code: "PCH", imageUrl: "https://img.cdndtl.co.uk/umbraco2017/21948/peach-emoji-iphone", price: "123", industry: "IT"),
+            Stock(named: "Banana", code: "BNN", imageUrl: "https://img.cdndtl.co.uk/umbraco2017/21948/peach-emoji-iphone", price: "456", industry: "IT"),
+            Stock(named: "Orange", code: "ORG", imageUrl: "https://img.cdndtl.co.uk/umbraco2017/21948/peach-emoji-iphone", price: "789", industry: "IT"),
         ]
         mockStockService.mockStocks = mockStocks
         

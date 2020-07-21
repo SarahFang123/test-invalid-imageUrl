@@ -27,7 +27,7 @@ class StockServiceTests: XCTestCase {
         
         let promise = expectation(description:"Completion handler is invoked")
         self.systemUnderTest.getStocks(completion: { data, shouldntHappen  in
-            stocks=data
+            stocks = data
             error = shouldntHappen
             promise.fulfill()
         })

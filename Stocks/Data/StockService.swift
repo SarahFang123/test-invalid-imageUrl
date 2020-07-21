@@ -11,9 +11,10 @@ import Foundation
 enum StockCallingError: Error {
     case problemGeneratingimgURL
     case problemGeneratingDataFromAPI
-    case problemEncodingData
+    case problemDecodingData
 }
-    
+
+//test empty API "https://run.mocky.io/v3/03f31e51-739f-4a41-8751-7b6e58e4600f"
 class StockService {
     private let urlString = "https://run.mocky.io/v3/1b0fc466-6dfa-4438-8c52-0f890c3a5599"
     func getStocks(completion: @escaping ([Stock]?, Error?) -> ())  {
@@ -36,8 +37,8 @@ class StockService {
                                                           from: data)
                 DispatchQueue.main.async {completion(stockResult.stocks, nil)}
             } catch (let error) {
-                print(error)
-                DispatchQueue.main.async {completion(nil, StockCallingError.problemEncodingData)}
+                //print(error)
+                DispatchQueue.main.async {completion(nil, StockCallingError.problemDecodingData)}
             }
             
         }

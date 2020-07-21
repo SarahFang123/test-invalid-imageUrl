@@ -25,7 +25,14 @@ class StockCell: UITableViewCell {
             DispatchQueue.global(qos: .userInitiated).async {
                 let stockImageData = NSData(contentsOf: URL(string: self.stock!.imageUrl)!)
                 DispatchQueue.main.async {
-                    self.stockImageView.image = UIImage(data: stockImageData as! Data)
+           //If we get imageUrl, we use it. If not, we use default picture
+                    if stockImageData != nil {
+                        self.stockImageView.image = UIImage(data: stockImageData as! Data)}
+                    else {
+                        self.stockImageView.image = UIImage(systemName: "multiply.circle.fill")
+                    }
+                    self.stockImageView.layer.cornerRadius = self.stockImageView.frame.width / 2
+                    
                 }
             }
         }
