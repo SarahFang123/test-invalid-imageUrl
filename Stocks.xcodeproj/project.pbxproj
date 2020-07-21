@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		424E148524C1425E00E33534 /* StockTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424E148424C1425E00E33534 /* StockTest.swift */; };
 		42565F1024BA7EE6009B85B3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42565F0F24BA7EE6009B85B3 /* DetailViewController.swift */; };
 		4261760324B1636400CBAA7E /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4261760224B1636400CBAA7E /* StockCell.swift */; };
 		4261760524B17B7000CBAA7E /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4261760424B17B7000CBAA7E /* Stock.swift */; };
 		42684ECF24B24DE80058EBEB /* StockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42684ECE24B24DE80058EBEB /* StockService.swift */; };
+		4269911C24C26095007BCBE3 /* StockServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4269911B24C26095007BCBE3 /* StockServiceTests.swift */; };
+		4269911E24C26E5E007BCBE3 /* StockListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4269911D24C26E5E007BCBE3 /* StockListViewControllerTests.swift */; };
 		42EEAD8D24AF95B300A98A89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EEAD8C24AF95B300A98A89 /* AppDelegate.swift */; };
 		42EEAD8F24AF95B300A98A89 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EEAD8E24AF95B300A98A89 /* SceneDelegate.swift */; };
 		42EEAD9124AF95B300A98A89 /* StockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EEAD9024AF95B300A98A89 /* StockListViewController.swift */; };
@@ -40,10 +43,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		424E148424C1425E00E33534 /* StockTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTest.swift; sourceTree = "<group>"; };
 		42565F0F24BA7EE6009B85B3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		4261760224B1636400CBAA7E /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
 		4261760424B17B7000CBAA7E /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		42684ECE24B24DE80058EBEB /* StockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockService.swift; sourceTree = "<group>"; };
+		4269911B24C26095007BCBE3 /* StockServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockServiceTests.swift; sourceTree = "<group>"; };
+		4269911D24C26E5E007BCBE3 /* StockListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListViewControllerTests.swift; sourceTree = "<group>"; };
 		42EEAD8924AF95B300A98A89 /* Stocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EEAD8C24AF95B300A98A89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42EEAD8E24AF95B300A98A89 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +160,9 @@
 			children = (
 				42EEADA624AF95B400A98A89 /* StocksTests.swift */,
 				42EEADA824AF95B400A98A89 /* Info.plist */,
+				424E148424C1425E00E33534 /* StockTest.swift */,
+				4269911B24C26095007BCBE3 /* StockServiceTests.swift */,
+				4269911D24C26E5E007BCBE3 /* StockListViewControllerTests.swift */,
 			);
 			path = StocksTests;
 			sourceTree = "<group>";
@@ -313,7 +322,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				424E148524C1425E00E33534 /* StockTest.swift in Sources */,
+				4269911C24C26095007BCBE3 /* StockServiceTests.swift in Sources */,
 				42EEADA724AF95B400A98A89 /* StocksTests.swift in Sources */,
+				4269911E24C26E5E007BCBE3 /* StockListViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 import Foundation
 
 class Stock: CustomDebugStringConvertible, Codable {
+    
     var debugDescription: String {
         return "Stock(name:\(self.name), code:\(self.code))"
     }

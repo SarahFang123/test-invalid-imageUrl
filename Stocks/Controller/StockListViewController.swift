@@ -20,18 +20,22 @@ class StockListViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.stockService = StockService()
-        stockService.getStocks(completion: {stocks, error in
+
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let confirmedService = self.stockService else { return }
+        
+        confirmedService.getStocks(completion: {stocks, error in
             guard let stocks = stocks, error == nil else {
                 return
             }
             self.stock = stocks
             self.tableView.reloadData()
         })
-    
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
             let destination = segue.destination as? DetailViewController,

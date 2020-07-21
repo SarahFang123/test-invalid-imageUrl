@@ -7,20 +7,34 @@
 //
 
 import XCTest
+@testable import Stocks
 
 class StockServiceTests: XCTestCase {
+    var systemUnderTest: StockService!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.systemUnderTest = StockService()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        self.systemUnderTest = nil
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAPI_returnsSuccessfulResult() throws {
+        //Given
+        var stocks:[Stock]!
+        var error: Error?
+        
+        let promise = expectation(description:"Completion handler is invoked")
+        self.systemUnderTest.getStocks(completion: { data, shouldntHappen  in
+            stocks=data
+            error = shouldntHappen
+            promise.fulfill()
+        })
+        wait(for: [promise], timeout: 5)
+        //when
+        XCTAssertNotNil(stocks)
+        XCTAssertNil(error)
     }
 
     func testPerformanceExample() throws {
